@@ -1,0 +1,59 @@
+
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+
+}
+
+body{
+
+    background: linear-gradient(to right, #2c5364, #0f2027);
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+.slider{
+    width: 275px;
+    height: 275px;
+    /* 
+    La propiedad tranform-style decide si los elementos anadidos preservan las propiedades 3d (preserve-3dç9 o no (flat).
+    */
+    transform-style: preserve-3d; 
+    animation: rotate 25s linear infinite;              
+
+}
+@keyframes rotate{
+    0%{
+        transform: perspective(1000px) rotateY(0deg);
+    }
+    100%{
+        transform: perspective(1000px) rotateY(360deg);
+    }
+}
+.slider span{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transform-origin: center;
+    transform: rotateY(calc(var(--i)*45deg)) translateZ(350px);
+}
+.slider span img{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    transition: 2s;
+    object-fit: cover;
+    border-radius: 10px;
+}
+.slider span:hover img{
+    transform: translateY(-50px) scale(1.2);
+}
+
